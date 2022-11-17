@@ -39,7 +39,7 @@ In order to do so, the first step is to install the ``rails`` gem:
 
 .. code-block:: sh
 
-    gem install rails -v '~> 6.0.0'
+    gem install rails -v '~> 7.0.0'
 
 
 Create New Application
@@ -103,11 +103,7 @@ Add Mongoid
   :name: Gemfile
   :caption: Gemfile
 
-    gem 'mongoid', '~> 7.0.5'
-
-.. note::
-
-    Mongoid 7.0.5 or higher is required to use Rails 6.0.
+    gem 'mongoid', '~> 8.0.2'
 
 2. Install gem dependencies:
 
@@ -176,23 +172,6 @@ The uncommented contents of ``config/mongoid.yml`` should look like this:
           uri: mongodb+srv://user:pass@yourcluster.mongodb.net/blog_development?retryWrites=true&w=majority
           options:
             server_selection_timeout: 5
-
-
-Other Rails Dependencies
-------------------------
-
-If this is the first Rails application you are creating, you may need to
-install Node.js on your computer. This can be done via your operating system
-packages or by `downloading a binary <https://nodejs.org/en/download/>`_.
-
-Next, if you do not have Yarn installed, `follow its installation instructions
-<https://yarnpkg.com/lang/en/docs/install/>`_.
-
-Finally, install webpacker:
-
-.. code-block:: sh
-
-    rails webpacker:install
 
 
 Run Application
@@ -371,11 +350,8 @@ mentioned in ``Gemfile``, and add ``mongoid``:
   :name: Gemfile
   :caption: Gemfile
 
-    gem 'mongoid', '~> 7.0.5'
+    gem 'mongoid', '~> 8.0.2'
 
-.. note::
-
-    Mongoid 7.0.5 or higher is required to use Rails 6.0.
 
 Install gem dependencies:
 
@@ -428,28 +404,6 @@ Review all configuration files (``config/application.rb``,
 comment out any references to ``config.active_record`` and
 ``config.active_storage``.
 
-Stop Spring
------------
-
-If your application is using Spring, which is the default on Rails 6,
-Spring must be stopped after changing dependencies or configuration.
-
-.. code-block:: sh
-
-  ./bin/spring stop
-
-.. note::
-
-    Sometimes running ``./bin/spring stop`` claims to stop Spring, but does
-    not. Verify that all Spring processes are terminated before proceeding.
-
-.. note::
-
-    Sometimes Spring tries to load ActiveRecord even when the application
-    contains no ActiveRecord references. If this happens, add an ActiveRecord
-    adapter dependency such as ``sqlite3`` to your ``Gemfile`` so that
-    ActiveRecord may be completely loaded or remove Spring from your
-    application.
 
 Mongoid Configuration
 ---------------------
